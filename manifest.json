@@ -1,0 +1,16 @@
+{
+  "name": "四國楊楊 2026",
+  "short_name": "四國旅遊",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDFBFF",
+  "theme_color": "#9D7BB0",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

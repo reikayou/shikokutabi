@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght=300;400;500;700;900&display=swap');
         
         :root {
             --lavender-primary: #9D7BB0;
@@ -364,7 +364,7 @@
                 hotel: { name: "小豆島國際飯店", phone: "0879-62-2111", addr: "香川縣小豆郡土庄町甲24-67", lat: 34.4842, lng: 134.1837, history: "長期以來作為小豆島觀光的重要門戶，接待無數國內外旅客。", features: "全客房皆為海景房，且距離知名景點天使之路極近。", nearby: "步行1分鐘即可抵達天使之路、迷路之町。" },
                 items: [
                     { time: "11:00", title: "小步危展望台", story: "自駕限定的景點。", mustSee: "可以欣賞到小步危峽谷的岩石、美麗的翠綠吉野川以及周圍鬱鬱蔥蔥的山脈的壯麗景色。", lat: 33.93735, lng: 133.75324 },
-                    { time: "13:00", title: "高松港搭乘渡輪", story: "開著車直接駛入巨大的渡輪肚子裡，是非常特別的跳島體驗。", history: "渡輪長年作為瀨戶內海島嶼間的交通與物流命脈。", features: "巨型船體可容納多輛遊覽車 Sus 且小客車，船艙平穩舒適。", mustSee: "甲板上的瀨戶內海群島風光、船上熱騰騰的烏龍麵販賣部。", eat: "船上熱騰騰素麵", lat: 34.3524, lng: 134.0456 },
+                    { time: "13:00", title: "高松港搭乘渡輪", story: "開著車直接駛入巨大的渡輪肚子裡，是非常特別的跳島體驗。", history: "渡輪長年作為瀨戶內海島嶼間的交通與物流命脈。", features: "巨型船體可容納多輛遊覽車與小客車，船艙平穩舒適。", mustSee: "甲板上的瀨戶內海群島風光、船上熱騰騰的烏龍麵販賣部。", eat: "船上熱騰騰素麵", lat: 34.3524, lng: 134.0456 },
                     { time: "16:00", title: "天使之路 (Angel Road)", story: "傳說只要與重要的人牽手走過這條步道，心願就能成真，是小豆島上最具人氣的浪漫景點。", history: "受潮汐影響形成的自然奇觀，近年因浪漫傳說成為戀人聖地。", features: "一條受潮汐影響、一天僅會浮現兩次的夢幻沙洲步道。", mustSee: "沙洲中央的約會鐘、寫滿心願的愛心繪馬。", buy: "心型繪馬明信片", lat: 34.4812, lng: 134.1884 }
                 ]
             },
@@ -381,10 +381,11 @@
             { 
                 day: 5, date: "07 Jun", loc: "香川", 
                 weather: { icon: "fa-cloud-sun", temp: "26°C", feels: "28°C", cond: "晴時多雲", sun: "04:53", sunset: "19:14", outfit: "白天注意防曬，傍晚在父母之濱拍照建議穿著亮色或淺色服裝。" },
-                guide: { hl: "挑戰海上守護神金刀比羅宮！傍晚衝刺日本版天空之鏡，拍下奇蹟美照。", rem: "已預約金刀比羅宮上午十一點車輛乘入。", backup: "若父母之濱無倒影，可至附近特色咖啡廳觀海。", food: "讚岐烏龍麵、香川當地鮮魚料理" },
-                hotel: { name: "高松 Dormy Inn", phone: "087-832-5489", addr: "香川縣高松市瓦町1-10-10", lat: 34.3401, lng: 134.0504, history: "日本知名連鎖商務飯店品牌，以提供高標準的溫泉與在地化早餐聞名。", features: "頂樓設有天然溫泉大浴場『玉藻之湯』，宵夜時段提供免費醬油拉麵。", nearby: "瓦町車站、高松中央商店街。" },
+                guide: { hl: "挑戰海上守護神金刀比羅宮！午後登高眺望天空之鳥居，傍晚衝刺日本版天空之鏡，拍下奇蹟美照。", rem: "已預約金刀比羅宮上午十一點車輛乘入。前往高屋神社山路較窄，會車請注意安全。", backup: "若父母之濱無倒影，可至附近特色咖啡廳觀海。", food: "讚岐烏龍麵、香川當地鮮魚料理" },
+                hotel: { name: "高松 Dormy Inn", phone: "087-832-5489", addr: "香川縣高松市瓦町1-10-10", lat: 34.3401, lng: 134.0504, history: "日本知名連鎖商務飯店 brand，以提供高標準的溫泉與在地化早餐聞名。", features: "頂樓設有天然溫泉大浴場『玉藻之湯』，宵夜時段提供免費醬油拉麵。", nearby: "瓦町車站、高松中央商店街。" },
                 items: [
                     { time: "11:00", title: "金刀比羅宮", story: "供奉著海上交通的守護神「金毘羅」，前往本宮需攀爬石階，沿途充滿歷史氛圍。", history: "自古便是海神信仰中心，江戶時代盛行『一生一定要參拜一次』的傳統。", features: "通往奧社多達1368階的長長石階，以及熱鬧的表參道老街。", mustSee: "御本宮的無敵視野、象頭山特有『金色幸福御守』。", eat: "表參道花嫁冰淇淋", buy: "金色幸福御守", lat: 34.1834, lng: 133.8122 },
+                    { time: "14:30", title: "高屋神社 (天空之鳥居)", story: "位於稻積山頂的神社，以其能夠俯瞰瀨戶內海與觀音寺市區的絕景鳥居而聞名。", history: "屬於式內社（記載於延喜式神名帳的神社），歷史非常悠久，自古作為祈求豐收與海上安全的神聖之地。", features: "鳥居矗立於海拔404公尺的山頂絕壁邊緣，呈現出彷彿漂浮在空中的視覺震撼。", mustSee: "透過「天空之鳥居」遠眺燧灘海景與沙灘海岸線的絕美畫面。", buy: "神社特製御守", lat: 34.1354, lng: 133.6936 },
                     { time: "17:30", title: "父母之濱", story: "被譽為「日本的烏尤尼鹽湖」，擁有長達1公里的平靜沙灘。", history: "原本是默默無聞的當地沙灘，近年因SNS美照一躍成為國際級打卡景點。", features: "退潮時積水形成的巨大天然鏡面，在無風的傍晚反射出絕美天空。", mustSee: "日落魔幻時刻的絕美天空之鏡倒影。", lat: 34.1876, lng: 133.6444 }
                 ]
             },
@@ -392,18 +393,18 @@
                 day: 6, date: "08 Jun", loc: "高松", 
                 weather: { icon: "fa-sun", temp: "27°C", feels: "28°C", cond: "晴天", sun: "04:53", sunset: "19:15", outfit: "市區逛街行程，輕便好穿脫的服裝最適合採買試穿。" },
                 guide: { hl: "手打烏龍麵初體驗！晚上享用香川縣靈魂美食「骨付鳥」，並進行藥妝大採購。", rem: "Dormy Inn頂樓有溫泉，逛街腿痠回飯店剛好可以泡湯放鬆。", backup: "若遇雨可前往高松市美術館或新屋島水族館。", food: "一鶴骨付鳥、橄欖鰤魚" },
-                hotel: { name: "高松 Dormy Inn", phone: "087-832-5489", addr: "香川縣高松市瓦町1-10-10", lat: 34.3401, lng: 134.0504, history: "日本知名連鎖商務飯店品牌，以提供高標準的溫泉與在地化早餐聞名。", features: "頂樓設有天然溫泉大浴場『玉藻之湯』，宵夜時段提供免費醬油拉麵。", nearby: "瓦町車站、高松中央商店街。" },
+                hotel: { name: "高松 Dormy Inn", phone: "087-832-5489", addr: "香川縣高松市瓦町1-10-10", lat: 34.3401, lng: 134.0504, history: "日本知名連鎖商務飯店 brand，以提供高標準的溫泉與在地化早餐聞名。", features: "頂樓設有天然溫泉大浴場『玉藻之湯』，宵夜時段提供免費醬油拉麵。", nearby: "瓦町車站、高松中央商店街。" },
                 items: [
                     { time: "10:00", title: "中野烏龍麵學校", story: "來到「烏龍麵縣」香川的必玩體驗！親手製作出Q彈的讚岐烏龍麵。", history: "為了推廣讚岐烏龍麵文化而設立的體驗型設施。", features: "跟著老師在歡樂的流行音樂節奏中，邊跳舞邊用腳踩揉麵糰。", mustSee: "親手踩揉的麵糰、獲頒掛著桿麵棍的專屬畢業證書。", menu: "自己踩的烏龍麵", buy: "半生烏龍麵條", lat: 34.1835, lng: 133.8188 },
                     { time: "15:00", title: "屋島展望台", story: "位於高松市郊的熔岩台地，觀景台能以極佳的視野俯瞰瀨戶內海星羅棋布的島嶼。", history: "日本古代『源平合戰』的關鍵戰場之一，歷史底淵深厚。", features: "獨特的熔岩台地地形，外觀平坦如巨大屋頂。", mustSee: "飛來館、俯瞰瀨戶內海與高松市區的美景。", lat: 34.3582, lng: 134.1011 },
-                    { time: "18:00", title: "高松市區晚餐 & 採買", story: "香川不只有烏龍麵，香烤帶骨雞腿也是絕品。晚餐後前往中央商店街進行大採購。", history: "高松中央商店街為日本最長的拱廊商店街，全長達2.7公里。", features: "聚集了香川最知名的美食與豐富的藥妝百貨。", mustSee: "一鶴『骨付鳥』的香脆外皮與多汁口感。", menu: "一鶴 骨付鳥(嫩雞)", buy: "藥妝、各式零食", lat: 34.3431, lng: 134.0485 }
+                    { time: "18:00", title: "高松市區晚餐 & 採買", story: "香川不只有烏龍麵，香烤帶骨雞腿也是絕品. 晚餐後前往中央商店街進行大採購。", history: "高松中央商店街為日本最長的拱廊商店街，全長達2.7公里。", features: "聚集了香川最知名的美食與豐富的藥妝百貨。", mustSee: "一鶴『骨付鳥』的香脆外皮與多汁口感。", menu: "一鶴 骨付鳥(嫩雞)", buy: "藥妝、各式零食", lat: 34.3431, lng: 134.0485 }
                 ]
             },
             { 
                 day: 7, date: "09 Jun", loc: "歸途", 
                 weather: { icon: "fa-cloud", temp: "25°C", feels: "26°C", cond: "多雲", sun: "04:53", sunset: "19:15", outfit: "準備搭機，長褲與舒適休閒鞋是最佳選擇。" },
                 guide: { hl: "在米其林三星級百年庭園中品茶，隨後前往機場免稅店進行最後衝刺。", rem: "還車前記得加滿油（索取收據），並確認護照與行李是否帶齊。", backup: "若時間充裕可至大型購物中心 AEON MALL 綾川最後採買。", food: "機場特色烏龍麵、讚岐和牛便當" },
-                hotel: { name: "溫温暖的家", phone: "-", addr: "台灣", lat: 25.0330, lng: 121.5654, history: "建立於出生那一年，是世界上最舒適的地方。", features: "擁有最熟悉的床鋪與親愛的家人。", nearby: "巷口的便利商店與熟悉的鹽酥雞攤。" },
+                hotel: { name: "溫溫暖暖的家", phone: "-", addr: "台灣", lat: 25.0330, lng: 121.5654, history: "建立於出生那一年，是世界上最舒適的地方。", features: "擁有最熟悉的床鋪與親愛的家人。", nearby: "巷口的便利商店與熟悉的鹽酥雞攤。" },
                 items: [
                     { time: "09:30", title: "栗林公園", story: "在這裡漫步，可體會「一步一景」的極致造園藝術。", history: "江戶時代讚岐高松藩主的別邸，歷經百年修築而成。", features: "回遊式大名庭園，以紫雲山為背景，巧妙佈置了水池與假山，獲米其林綠色指南三星評價。", mustSee: "從飛來峰俯瞰偃月橋、在掬月亭品茶賞景。", eat: "掬月亭抹茶與和菓子", lat: 34.3297, lng: 134.0444 },
                     { time: "16:00", title: "高松機場還車", story: "依依不捨結束自駕之旅，把四國的美好回憶打包帶回家。", history: "四國自駕遊的重要起訖點。", features: "便利的租車歸還流程與最後採買點。", mustSee: "航廈內的當地特產免稅店、最後的讚岐烏龍麵高湯水龍頭。", buy: "和三盆糖、瓦仙貝", lat: 34.2141, lng: 134.0155 },
@@ -487,51 +488,49 @@
                                 ${item.mustSee ? `<p class="text-[13px] text-gray-600 leading-relaxed text-justify"><span class="font-bold text-purple-600">👀 必看重點：</span>${item.mustSee}</p>` : ''}
                             </div>
                             <div class="flex flex-wrap mb-4">
-                                ${item.eat ? `<span class="tag tag-eat"><i class="fa-solid fa-utensils mr-1"></i>必吃：${item.eat}</span>` : ''}
-                                ${item.menu ? `<span class="tag tag-menu"><i class="fa-solid fa-fire mr-1"></i>必點：${item.menu}</span>` : ''}
-                                ${item.buy ? `<span class="tag tag-buy"><i class="fa-solid fa-bag-shopping mr-1"></i>必買：${item.buy}</span>` : ''}
+                                ${item.eat ? `<span class="tag tag-eat"><i class="fa-solid fa-utensils mr-1"></i>${item.eat}</span>` : ''}
+                                ${item.menu ? `<span class="tag tag-menu"><i class="fa-solid fa-book-open mr-1"></i>${item.menu}</span>` : ''}
+                                ${item.buy ? `<span class="tag tag-buy"><i class="fa-solid fa-bag-shopping mr-1"></i>${item.buy}</span>` : ''}
                             </div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=${item.lat},${item.lng}" target="_blank" class="inline-flex items-center text-xs text-purple-600 font-bold bg-purple-50 px-3 py-2 rounded-xl mt-1">
-                                <i class="fa-solid fa-location-arrow mr-1.5"></i>Google 地圖導航
-                            </a>
                         </div>
                     </details>
                 </div>
             `).join('');
-            
             document.getElementById('itinerary-list').innerHTML = itemsHtml;
-        }
-
-        function saveTime() {
-            const timeVal = document.getElementById('meet-time').value;
-            const currentDay = tripData[currentIdx].day;
-            localStorage.setItem(`meetTime_D${currentDay}`, timeVal);
+            
+            if (document.getElementById('map-page').classList.contains('hidden') === false) {
+                updateMapMarkers();
+            }
         }
 
         function renderHotelList() {
-            const html = tripData.map(d => `
-                <div class="bg-white p-5 rounded-super shadow-soft border border-purple-50">
-                    <div class="flex justify-between items-start mb-2">
+            let hotelHtml = tripData.map((d) => `
+                <div class="bg-white p-5 rounded-super shadow-sm border border-purple-50">
+                    <div class="flex justify-between items-start mb-3">
                         <div>
-                            <span class="text-[9px] bg-purple-100 text-purple-700 font-bold px-2 py-0.5 rounded-md">DAY ${d.day} 住宿</span>
+                            <span class="text-[10px] bg-purple-100 text-purple-700 px-2 py-0.5 rounded-md font-bold">DAY ${d.day} (${d.loc})</span>
                             <h4 class="font-black text-gray-800 text-lg mt-1">${d.hotel.name}</h4>
                         </div>
-                        <a href="tel:${d.hotel.phone}" class="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center text-green-600 shadow-sm">
-                            <i class="fa-solid fa-phone text-sm"></i>
-                        </a>
+                        ${d.hotel.phone !== '-' ? `<a href="tel:${d.hotel.phone}" class="w-10 h-10 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center shadow-sm"><i class="fa-solid fa-phone"></i></a>` : ''}
                     </div>
-                    <p class="text-xs text-gray-400 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-purple-300"></i>${d.hotel.addr}</p>
-                    <div class="text-xs text-gray-600 space-y-2 border-t border-gray-100 pt-3">
-                        <p><span class="font-bold text-gray-700">🏨 歷史特色：</span>${d.hotel.history}</p>
-                        <p><span class="font-bold text-gray-700">✨ 設施亮點：</span>${d.hotel.features}</p>
-                        <p><span class="font-bold text-gray-700">📍 周邊環境：</span>${d.hotel.nearby}</p>
+                    <p class="text-xs text-gray-500 mb-4 font-medium"><i class="fa-solid fa-location-dot mr-1 text-purple-400"></i>${d.hotel.addr}</p>
+                    <div class="space-y-2 border-t border-gray-50 pt-3 text-xs leading-relaxed">
+                        <p class="text-gray-600"><span class="font-bold text-purple-600">📜 歷史沿革：</span>${d.hotel.history}</p>
+                        <p class="text-gray-600"><span class="font-bold text-purple-600">✨ 飯店特色：</span>${d.hotel.features}</p>
+                        <p class="text-gray-600"><span class="font-bold text-purple-600">📍 周邊環境：</span>${d.hotel.nearby}</p>
                     </div>
                 </div>
             `).join('');
-            document.getElementById('hotel-list-container').innerHTML = html;
+            document.getElementById('hotel-list-container').innerHTML = hotelHtml;
         }
 
-        function switchTab(tabName) {
+        function saveTime() {
+            const d = tripData[currentIdx];
+            const timeVal = document.getElementById('meet-time').value;
+            localStorage.setItem(`meetTime_D${d.day}`, timeVal);
+        }
+
+        function switchTab(tab) {
             document.getElementById('itinerary-page').classList.add('hidden');
             document.getElementById('map-page').classList.add('hidden');
             document.getElementById('info-page').classList.add('hidden');
@@ -540,76 +539,94 @@
             document.getElementById('nav-map').className = "text-gray-400 flex-1 py-2 flex flex-col items-center transition-all";
             document.getElementById('nav-info').className = "text-gray-400 flex-1 py-2 flex flex-col items-center transition-all";
 
-            if(tabName === 'itinerary') {
+            if (tab === 'itinerary') {
                 document.getElementById('itinerary-page').classList.remove('hidden');
-                document.getElementById('nav-itinerary').className = "text-purple-600 flex-1 py-2 flex flex-col items-center transition-all";
-            } else if(tabName === 'map') {
+                document.getElementById('nav-itinerary').classList.replace('text-gray-400', 'text-purple-600');
+            } else if (tab === 'map') {
                 document.getElementById('map-page').classList.remove('hidden');
-                document.getElementById('nav-map').className = "text-purple-600 flex-1 py-2 flex flex-col items-center transition-all";
-                
-                setTimeout(() => {
-                    initLeafletMap();
-                }, 100);
-            } else if(tabName === 'info') {
+                document.getElementById('nav-map').classList.replace('text-gray-400', 'text-purple-600');
+                initMap();
+            } else if (tab === 'info') {
                 document.getElementById('info-page').classList.remove('hidden');
-                document.getElementById('nav-info').className = "text-purple-600 flex-1 py-2 flex flex-col items-center transition-all";
+                document.getElementById('nav-info').classList.replace('text-gray-400', 'text-purple-600');
             }
         }
 
-        function initLeafletMap() {
-            if (mapInstance) {
-                mapInstance.invalidateSize();
-                return;
-            }
+        function initMap() {
+            setTimeout(() => {
+                if (!mapInstance) {
+                    mapInstance = L.map('map').setView([33.8, 133.8], 8);
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '© OpenStreetMap'
+                    }).addTo(mapInstance);
+                }
+                updateMapMarkers();
+            }, 100);
+        }
 
-            mapInstance = L.map('map').setView([33.8000, 133.8000], 8);
+        function updateMapMarkers() {
+            if (!mapInstance) return;
+            
+            // 清除現有標記
+            mapInstance.eachLayer((layer) => {
+                if (layer instanceof L.Marker) {
+                    mapInstance.removeLayer(layer);
+                }
+            });
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; OpenStreetMap contributors'
-            }).addTo(mapInstance);
+            // 根據不同天設定不同標記顏色 (Day 1-2: 紅, Day 3-4: 紫, Day 5-7: 藍)
+            tripData.forEach((d) => {
+                let color = '#3B82F6';
+                if (d.day <= 2) color = '#E96075';
+                else if (d.day <= 4) color = '#9D7BB0';
 
-            tripData.forEach(dayObj => {
-                let markerColor = "#3B82F6"; 
-                if (dayObj.day <= 2) markerColor = "#E96075"; 
-                else if (dayObj.day <= 4) markerColor = "#9D7BB0"; 
-
-                dayObj.items.forEach(item => {
-                    if(item.lat && item.lng) {
+                d.items.forEach((item) => {
+                    if (item.lat && item.lng) {
+                        const markerHtml = `<div style="background-color: ${color}; width: 12px; height: 12px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 4px rgba(0,0,0,0.4);"></div>`;
                         const customIcon = L.divIcon({
-                            className: 'custom-div-icon',
-                            html: `<div style="background-color: ${markerColor}; width: 14px; height: 14px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>`,
-                            iconSize: [14, 14],
-                            iconAnchor: [7, 7]
+                            html: markerHtml,
+                            className: 'custom-pin',
+                            iconSize: [12, 12]
                         });
 
                         L.marker([item.lat, item.lng], { icon: customIcon })
-                         .addTo(mapInstance)
-                         .bindPopup(`<b class="text-purple-700">Day ${dayObj.day} - ${item.time}</b><br><b class="text-sm">${item.title}</b><br><span class="text-xs text-gray-500">${item.story.substring(0, 20)}...</span>`);
+                            .addTo(mapInstance)
+                            .bindPopup(`<b>Day ${d.day} - ${item.time}</b><br>${item.title}`);
                     }
                 });
             });
+
+            // 聚焦到當天第一個景點
+            const currentDayItems = tripData[currentIdx].items;
+            if (currentDayItems.length > 0 && currentDayItems[0].lat) {
+                mapInstance.setView([currentDayItems[0].lat, currentDayItems[0].lng], 10);
+            }
         }
 
         function startAlarmSystem() {
-            if(alarmInterval) clearInterval(alarmInterval);
+            if (alarmInterval) clearInterval(alarmInterval);
             
             alarmInterval = setInterval(() => {
                 const now = new Date();
-                const currentDay = tripData[currentIdx].day;
-                const savedMeetTime = localStorage.getItem(`meetTime_D${currentDay}`) || "08:30";
+                const currentDayData = tripData[currentIdx];
+                const savedMeetTime = localStorage.getItem(`meetTime_D${currentDayData.day}`) || "08:30";
                 
-                const [meetHour, meetMinute] = savedMeetTime.split(':').map(Number);
-                const meetDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), meetHour, meetMinute, 0);
+                const [meetH, meetM] = savedMeetTime.split(':').map(Number);
+                const meetTimeToday = new Date();
+                meetTimeToday.setHours(meetH, meetM, 0, 0);
+
+                // 計算時間差（毫秒）
+                const diff = meetTimeToday.getTime() - now.getTime();
                 
-                const timeDiffMin = (meetDate.getTime() - now.getTime()) / 60000;
-                
-                if (timeDiffMin > 4.0 && timeDiffMin <= 5.0) {
-                    const modal = document.getElementById('alarm-modal');
-                    if(modal.classList.contains('hidden')) {
-                        modal.classList.remove('hidden');
+                // 剛好在集合前 5 分鐘（容許度 1 分鐘內，避免重複觸發使用標記）
+                if (diff > 4 * 60 * 1000 && diff <= 5 * 60 * 1000) {
+                    const hasAlerted = sessionStorage.getItem(`alerted_D${currentDayData.day}`);
+                    if (!hasAlerted) {
+                        document.getElementById('alarm-modal').classList.remove('hidden');
+                        sessionStorage.setItem(`alerted_D${currentDayData.day}`, 'true');
                     }
                 }
-            }, 30000); 
+            }, 10000); // 每 10 秒檢查一次
         }
     </script>
 </body>

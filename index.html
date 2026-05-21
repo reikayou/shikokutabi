@@ -65,7 +65,7 @@
         .tag-menu { background: #FEF2F2; color: #B91C1C; border: 1px solid #FEE2E2; }
         .tag-buy { background: #EFF6FF; color: #1D4ED8; border: 1px solid #DBEAFE; }
 
-        /* 新版機票設計 */
+        /* 機票設計 */
         .flight-card {
             background-color: var(--creamy-bg);
             border: 2px solid var(--lavender-primary);
@@ -97,10 +97,7 @@
             clip-path: inset(0 0 50% 0);
         }
 
-        /* 自訂 Alert 彈窗 */
         #alarm-modal { backdrop-filter: blur(5px); }
-
-        /* Leaflet 地圖容器 */
         #map { height: 60vh; width: 100%; border-radius: 1.5rem; z-index: 10; }
     </style>
 </head>
@@ -111,7 +108,7 @@
             <p class="text-[10px] font-bold tracking-[0.2em] opacity-90 drop-shadow-lg">SHIKOKU JAPAN 2026</p>
             <h1 class="text-xl font-black mt-1 drop-shadow-lg" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">2026 四國楊家自駕旅</h1>
         </div>
-        <img src="new_shikoku_banner.png" alt="四國自駕橫幅">
+        <img src="new_shikoku_banner.png" alt="四國自駕橫幅" onerror="this.src='https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1200&q=80'">
     </div>
 
     <main>
@@ -164,8 +161,8 @@
                         <i class="fa-solid fa-bullhorn mr-2"></i>導遊每日簡報
                     </h4>
                     <div class="space-y-3 text-[13px] leading-relaxed relative z-10">
-                        <p><span class="font-black text-yellow-200">#特色亮點：</span><span id="guide-highlight">高知大冒險展開！</span></p>
-                        <p><span class="font-black text-purple-200">#小提醒：</span><span id="guide-reminder">下飛機後辦理租車需預留時間。</span></p>
+                        <p><span class="font-black text-yellow-200">#特色亮點：</span><span id="guide-highlight"></span></p>
+                        <p><span class="font-black text-purple-200">#小提醒：</span><span id="guide-reminder"></span></p>
                         <p><span class="font-black text-blue-200">#推薦備用行程：</span><span id="guide-backup"></span></p>
                         <p><span class="font-black text-orange-200">#推薦美食：</span><span id="guide-food"></span></p>
                     </div>
@@ -211,7 +208,6 @@
 
         <!-- 航班與住宿資訊頁面 -->
         <section id="info-page" class="hidden px-5 mt-6">
-            
             <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
                 <i class="fa-solid fa-plane text-purple-500 mr-2"></i>航班資訊
             </h2>
@@ -301,7 +297,6 @@
             </h2>
             <div id="hotel-list-container" class="space-y-4 mb-10">
             </div>
-
         </section>
     </main>
 
@@ -334,7 +329,7 @@
     </div>
 
     <script>
-        // --- 完整 7 天導遊資料庫 ---
+        // --- 完整 7 天導遊資料庫（Day 6 已復原為最初的高松行程） ---
         const tripData = [
             { 
                 day: 1, date: "03 Jun", loc: "高知", 
@@ -350,7 +345,7 @@
                 day: 2, date: "04 Jun", loc: "四萬十", 
                 weather: { icon: "fa-sun", temp: "27°C", feels: "29°C", cond: "晴天", sun: "04:56", sunset: "19:16", outfit: "全天室外，紫外線強，建議配戴墨鏡與防曬乳。" },
                 guide: { hl: "探訪日本最後的清流！品嚐大正町市場鮮魚，晚上直奔弘人市場體驗高知屋台酒國文化。", rem: "四萬十川周邊道路較窄，開車請留意對向來車。弘人市場人潮較多，請留意長輩隨身物品。", backup: "若無法乘船可改參觀海洋堂四萬十嗜好館。", food: "明神丸明火炙燒鰹魚、四萬十川天然鰻魚" },
-                hotel: { name: "高知城西館", phone: "088-822-0281", addr: "高知縣高知市上町2-5-34", lat: 33.5597, lng: 133.5311, history: "創業於明治10年(1877年)，擁有超過140年歷史，為皇室與眾多文人雅士的指定御宿。", features: "頂樓展望露天風呂可俯瞰高知城與市區夜景。", nearby: "距離高知城步行僅需10分鐘。" },
+                hotel: { name: "高知城西館", phone: "088-822-0281", addr: "高知縣高知市上町2-5-34", lat: 33.5597, lng: 133.5311, history: "創業於明治10年(1877年)，擁有超過140年歷史，為皇室與眾年文人雅士的指定御宿。", features: "頂樓展望露天風呂可俯瞰高知城與市區夜景。", nearby: "距離高知城步行僅需10分鐘。" },
                 items: [
                     { time: "10:00", title: "久禮大正町市場", story: "擁有百年歷史的古老漁夫市場。每天早上由當地漁民直送新鮮漁獲，充滿濃厚的人情味。", history: "源自明治時代的漁民聚集地，歷經百年風霜依然繁華，是了解土佐漁港文化的最佳去處。", features: "濃厚的人情味與純樸的土佐漁港風情。", mustSee: "當日限定鮮切肥美『初鰹』、當地獨有柑橘水果。", eat: "現切初鰹定食", buy: "現炸天婦羅魚餅", lat: 33.3284, lng: 133.2255 },
                     { time: "14:30", title: "佐田沉下橋", story: "四萬十川最長的一座沉下橋，展現了當地人與自然共存的智慧。", history: "建於昭和年代，為了適應四萬十川暴漲而特意設計成會被水淹沒的橋樑。", features: "無欄杆設計，與自然風景完美融合，橋面寬廣適合散步。", mustSee: "橋面上拍攝山川倒影與清澈見底的河水。", buy: "四萬十川青海苔", lat: 32.9934, lng: 132.9333 },
@@ -385,19 +380,20 @@
                 hotel: { name: "高松 Dormy Inn", phone: "087-832-5489", addr: "香川縣高松市瓦町1-10-10", lat: 34.3401, lng: 134.0504, history: "日本知名連鎖商務飯店 brand，以提供高標準的溫泉與在地化早餐聞名。", features: "頂樓設有天然溫泉大浴場『玉藻之湯』，宵夜時段提供免費醬油拉麵。", nearby: "瓦町車站、高松中央商店街。" },
                 items: [
                     { time: "11:00", title: "金刀比羅宮", story: "供奉著海上交通的守護神「金毘羅」，前往本宮需攀爬石階，沿途充滿歷史氛圍。", history: "自古便是海神信仰中心，江戶時代盛行『一生一定要參拜一次』的傳統。", features: "通往奧社多達1368階的長長石階，以及熱鬧的表參道老街。", mustSee: "御本宮的無敵視野、象頭山特有『金色幸福御守』。", eat: "表參道花嫁冰淇淋", buy: "金色幸福御守", lat: 34.1834, lng: 133.8122 },
-                    { time: "14:30", title: "高屋神社 (天空之鳥居)", story: "位於稻積山頂的神社，以其能夠俯瞰瀨戶內海與觀音寺市區的絕景鳥居而聞名。", history: "屬於式內社（記載於延喜式神名帳的神社），歷史非常悠久，自古作為祈求豐收與海上安全的神聖之地。", features: "鳥居矗立於海拔404公尺的山頂絕壁邊緣，呈現出彷彿漂浮在空中的視覺震撼。", mustSee: "透過「天空之鳥居」遠眺燧灘海景與沙灘海岸線的絕美畫面。", buy: "神社特製御守", lat: 34.1354, lng: 133.6936 },
+                    { time: "14:30", title: "高屋神社 (天空之鳥居)", story: "位於稻積山頂的神社，以其能夠俯瞰瀨戶內海與觀音寺市區的絕景鳥居而聞名。", history: "屬於式內社，歷史非常悠久，自古作為祈求豐收與海上安全的神聖之地。", features: "鳥居矗立於海拔404公尺的山頂絕壁邊緣，呈現出彷彿漂浮在空中的視覺震撼。", mustSee: "透過「天空之鳥居」遠眺燧灘海景與沙灘海岸線的絕美畫面。", buy: "神社特製御守", lat: 34.1354, lng: 133.6936 },
                     { time: "17:30", title: "父母之濱", story: "被譽為「日本的烏尤尼鹽湖」，擁有長達1公里的平靜沙灘。", history: "原本是默默無聞的當地沙灘，近年因SNS美照一躍成為國際級打卡景點。", features: "退潮時積水形成的巨大天然鏡面，在無風的傍晚反射出絕美天空。", mustSee: "日落魔幻時刻的絕美天空之鏡倒影。", lat: 34.1876, lng: 133.6444 }
                 ]
             },
             { 
-                day: 6, date: "08 Jun", loc: "高松", 
-                weather: { icon: "fa-sun", temp: "27°C", feels: "28°C", cond: "晴天", sun: "04:53", sunset: "19:15", outfit: "市區逛街行程，輕便好穿脫的服裝最適合採買試穿。" },
-                guide: { hl: "手打烏龍麵初體驗！晚上享用香川縣靈魂美食「骨付鳥」，並進行藥妝大採購。", rem: "Dormy Inn頂樓有溫泉，逛街腿痠回飯店剛好可以泡湯放鬆。", backup: "若遇雨可前往高松市美術館或新屋島水族館。", food: "一鶴骨付鳥、橄欖鰤魚" },
+                day: 6, date: "08 Jun", loc: "香川", 
+                weather: { icon: "fa-cloud-sun", temp: "25°C", feels: "26°C", cond: "晴時多雲", sun: "04:53", sunset: "19:14", outfit: "市區大採購與登高行程，建議穿著輕便好走路的休閒鞋。" },
+                guide: { hl: "感受金刀比羅宮的莊嚴，午後俯瞰高松城址，傍晚享受商店街採購樂趣，晚餐品嚐在地極品骨付鳥！", rem: "金刀比羅宮台階較多，請配合長輩步調適度休息。商店街購物注意免稅手續辦理時間。", backup: "若長輩腳力不支，可改在表參道特色茶屋休息、享用和菓子。", food: "一鶴 骨付鳥、高松在地讚岐烏龍麵" },
                 hotel: { name: "高松 Dormy Inn", phone: "087-832-5489", addr: "香川縣高松市瓦町1-10-10", lat: 34.3401, lng: 134.0504, history: "日本知名連鎖商務飯店 brand，以提供高標準的溫泉與在地化早餐聞名。", features: "頂樓設有天然溫泉大浴場『玉藻之湯』，宵夜時段提供免費醬油拉麵。", nearby: "瓦町車站、高松中央商店街。" },
                 items: [
-                    { time: "10:00", title: "中野烏龍麵學校", story: "來到「烏龍麵縣」香川的必玩體驗！親手製作出Q彈的讚岐烏龍麵。", history: "為了推廣讚岐烏龍麵文化而設立的體驗型設施。", features: "跟著老師在歡樂的流行音樂節奏中，邊跳舞邊用腳踩揉麵糰。", mustSee: "親手踩揉的麵糰、獲頒掛著桿麵棍的專屬畢業證書。", menu: "自己踩的烏龍麵", buy: "半生烏龍麵條", lat: 34.1835, lng: 133.8188 },
-                    { time: "15:00", title: "屋島展望台", story: "位於高松市郊的熔岩台地，觀景台能以極佳的視野俯瞰瀨戶內海星羅棋布的島嶼。", history: "日本古代『源平合戰』的關鍵戰場之一，歷史底淵深厚。", features: "獨特的熔岩台地地形，外觀平坦如巨大屋頂。", mustSee: "飛來館、俯瞰瀨戶內海與高松市區的美景。", lat: 34.3582, lng: 134.1011 },
-                    { time: "18:00", title: "高松市區晚餐 & 採買", story: "香川不只有烏龍麵，香烤帶骨雞腿也是絕品. 晚餐後前往中央商店街進行大採購。", history: "高松中央商店街為日本最長的拱廊商店街，全長達2.7公里。", features: "聚集了香川最知名的美食與豐富的藥妝百貨。", mustSee: "一鶴『骨付鳥』的香脆外皮與多汁口感。", menu: "一鶴 骨付鳥(嫩雞)", buy: "藥妝、各式零食", lat: 34.3431, lng: 134.0485 }
+                    { time: "10:30", title: "金刀比羅宮參拜", story: "續昨日未盡之興，更深一層體驗這座全日本著名的海上守護神神社，感受江戶時代庶民一生必朝聖一次的熱情。", history: "這裡長年作為日本信仰重鎮，保留了豐富的奉納繪馬與古建築。", features: "古樸的大門與神馬舍，沿途石燈籠林立，景色幽靜。", mustSee: "旭社的精美木雕、表參道兩旁的百年老鋪。", eat: "炙燒烏龍麵風味仙貝", buy: "金毘羅狗御守", lat: 34.1834, lng: 133.8122 },
+                    { time: "14:30", title: "高松城址 (玉藻公園)", story: "日本三大「水城」之一，直接引進瀨戶內海的海水注入護城河，甚至能看到鯛魚在護城河中游動。", history: "天正16年由生駒親正開築，為讚岐國的政治中心，近代轉型為親水公園。", features: "獨特的引海水道系統，天守閣遺跡視野遼闊，園內松樹修剪極為精美。", mustSee: "鞘橋、用海水養殖鯛魚的護城河「餵鯛魚體驗」。", buy: "高松城限定御城印", lat: 34.3501, lng: 134.0511 },
+                    { time: "16:30", title: "高松中央商店街大採購", story: "全日本最長的拱廊商店街，總長達2.7公里，匯集了時尚精品、藥妝店及各式文青咖啡廳。", features: "有圓頂挑高的現代化中庭設計，遮風避雨，動線平坦非常適合長輩輕鬆逛街。", mustSee: "瓦町 FLAG、各式連鎖大型藥妝店、伴手禮專賣店。", buy: "合利他命、日本限定藥妝", lat: 34.3431, lng: 134.0485 },
+                    { time: "18:30", title: "「一鶴」骨付鳥晚餐", story: "高松最知名的殿堂級美食，將帶骨雞腿肉加上特製香料與大蒜，烤得外皮金黃酥脆、香氣四溢。", history: "創業超過一甲子的在地老店，成功將「骨付鳥」推廣成為全香川縣的代表性庶民美食。", features: "分為肉質結實有嚼勁的「老雞」與鮮嫩多汁的「嫩雞」，非常適合作為自駕的慶功宴。", menu: "一鶴 骨付鳥 (ひな鳥嫩雞) + 雞肉飯", lat: 34.3415, lng: 134.0522 }
                 ]
             },
             { 
@@ -408,7 +404,7 @@
                 items: [
                     { time: "09:30", title: "栗林公園", story: "在這裡漫步，可體會「一步一景」的極致造園藝術。", history: "江戶時代讚岐高松藩主的別邸，歷經百年修築而成。", features: "回遊式大名庭園，以紫雲山為背景，巧妙佈置了水池與假山，獲米其林綠色指南三星評價。", mustSee: "從飛來峰俯瞰偃月橋、在掬月亭品茶賞景。", eat: "掬月亭抹茶與和菓子", lat: 34.3297, lng: 134.0444 },
                     { time: "16:00", title: "高松機場還車", story: "依依不捨結束自駕之旅，把四國的美好回憶打包帶回家。", history: "四國自駕遊的重要起訖點。", features: "便利的租車歸還流程與最後採買點。", mustSee: "航廈內的當地特產免稅店、最後的讚岐烏龍麵高湯水龍頭。", buy: "和三盆糖、瓦仙貝", lat: 34.2141, lng: 134.0155 },
-                    { time: "19:05", title: "回程航班 (CI 179)", story: "搭乘中華航空平安降落台灣，期待下一次的旅行！", history: "連接台日兩地的空中橋樑。", features: "舒適的飛行體驗與滿滿的回憶。", mustSee: "窗外的雲海與抵達時的台灣夜景。", lat: 25.0797, lng: 121.2342 }
+                    { time: "19:05", title: "回程航班 (CI 179)", story: "搭乘中華航空平安降落台灣，期待下一次的旅行！", history: "連接台日兩地的空中橋樑。", features: "舒適的飛行體驗與滿滿的回憶。", mustSee: "窗外的雲海與抵達時的台灣夜景。", lat: 25.0797, strokeColor: "#000", lng: 121.2342 }
                 ]
             }
         ];
@@ -416,6 +412,7 @@
         let currentIdx = 0;
         let mapInstance = null;
         let alarmInterval = null;
+        let markersGroup = null;
 
         window.onload = function() {
             init();
@@ -426,6 +423,7 @@
             renderSchedule(0);
             renderHotelList();
             startAlarmSystem();
+            initLeafletMap();
         }
 
         function renderDateBtns() {
@@ -485,148 +483,128 @@
                                 <p class="text-[13px] text-gray-600 leading-relaxed text-justify"><span class="font-bold text-purple-600">📖 景點故事：</span>${item.story}</p>
                                 ${item.history ? `<p class="text-[13px] text-gray-600 leading-relaxed text-justify"><span class="font-bold text-purple-600">🏛️ 歷史背景：</span>${item.history}</p>` : ''}
                                 ${item.features ? `<p class="text-[13px] text-gray-600 leading-relaxed text-justify"><span class="font-bold text-purple-600">✨ 特色亮點：</span>${item.features}</p>` : ''}
-                                ${item.mustSee ? `<p class="text-[13px] text-gray-600 leading-relaxed text-justify"><span class="font-bold text-purple-600">👀 必看重點：</span>${item.mustSee}</p>` : ''}
                             </div>
-                            <div class="flex flex-wrap mb-4">
+                            <div class="flex flex-wrap">
                                 ${item.eat ? `<span class="tag tag-eat"><i class="fa-solid fa-utensils mr-1"></i>${item.eat}</span>` : ''}
-                                ${item.menu ? `<span class="tag tag-menu"><i class="fa-solid fa-book-open mr-1"></i>${item.menu}</span>` : ''}
-                                ${item.buy ? `<span class="tag tag-buy"><i class="fa-solid fa-bag-shopping mr-1"></i>${item.buy}</span>` : ''}
+                                ${item.menu ? `<span class="tag tag-menu"><i class="fa-solid fa-book-open mr-1"></i>推薦點：${item.menu}</span>` : ''}
+                                ${item.buy ? `<span class="tag tag-buy"><i class="fa-solid fa-bag-shopping mr-1"></i>必買：${item.buy}</span>` : ''}
                             </div>
                         </div>
                     </details>
                 </div>
             `).join('');
             document.getElementById('itinerary-list').innerHTML = itemsHtml;
-            
-            if (document.getElementById('map-page').classList.contains('hidden') === false) {
-                updateMapMarkers();
+
+            if (mapInstance) {
+                updateMapMarkers(idx);
             }
         }
 
         function renderHotelList() {
-            let hotelHtml = tripData.map((d) => `
-                <div class="bg-white p-5 rounded-super shadow-sm border border-purple-50">
+            const html = tripData.map(d => `
+                <div class="bg-white p-5 rounded-super shadow-soft border border-purple-50">
                     <div class="flex justify-between items-start mb-3">
-                        <div>
-                            <span class="text-[10px] bg-purple-100 text-purple-700 px-2 py-0.5 rounded-md font-bold">DAY ${d.day} (${d.loc})</span>
-                            <h4 class="font-black text-gray-800 text-lg mt-1">${d.hotel.name}</h4>
-                        </div>
-                        ${d.hotel.phone !== '-' ? `<a href="tel:${d.hotel.phone}" class="w-10 h-10 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center shadow-sm"><i class="fa-solid fa-phone"></i></a>` : ''}
+                        <span class="text-xs bg-purple-100 text-purple-700 font-bold px-2.5 py-1 rounded-md">Day ${d.day} 住宿</span>
+                        <a href="tel:${d.hotel.phone}" class="text-xs text-purple-600 font-bold flex items-center"><i class="fa-solid fa-phone mr-1"></i>撥號</a>
                     </div>
-                    <p class="text-xs text-gray-500 mb-4 font-medium"><i class="fa-solid fa-location-dot mr-1 text-purple-400"></i>${d.hotel.addr}</p>
-                    <div class="space-y-2 border-t border-gray-50 pt-3 text-xs leading-relaxed">
-                        <p class="text-gray-600"><span class="font-bold text-purple-600">📜 歷史沿革：</span>${d.hotel.history}</p>
-                        <p class="text-gray-600"><span class="font-bold text-purple-600">✨ 飯店特色：</span>${d.hotel.features}</p>
-                        <p class="text-gray-600"><span class="font-bold text-purple-600">📍 周邊環境：</span>${d.hotel.nearby}</p>
+                    <h3 class="text-lg font-black text-gray-800 mb-1">${d.hotel.name}</h3>
+                    <p class="text-xs text-gray-400 mb-3 font-medium"><i class="fa-solid fa-location-dot mr-1"></i>${d.hotel.addr}</p>
+                    <div class="space-y-2 text-xs border-t border-gray-50 pt-3">
+                        <p class="text-gray-600"><span class="font-bold text-purple-500">📜 旅館故事：</span>${d.hotel.history}</p>
+                        <p class="text-gray-600"><span class="font-bold text-purple-500">✨ 亮點特色：</span>${d.hotel.features}</p>
                     </div>
                 </div>
             `).join('');
-            document.getElementById('hotel-list-container').innerHTML = hotelHtml;
-        }
-
-        function saveTime() {
-            const d = tripData[currentIdx];
-            const timeVal = document.getElementById('meet-time').value;
-            localStorage.setItem(`meetTime_D${d.day}`, timeVal);
+            document.getElementById('hotel-list-container').innerHTML = html;
         }
 
         function switchTab(tab) {
             document.getElementById('itinerary-page').classList.add('hidden');
             document.getElementById('map-page').classList.add('hidden');
             document.getElementById('info-page').classList.add('hidden');
-
-            document.getElementById('nav-itinerary').className = "text-gray-400 flex-1 py-2 flex flex-col items-center transition-all";
-            document.getElementById('nav-map').className = "text-gray-400 flex-1 py-2 flex flex-col items-center transition-all";
-            document.getElementById('nav-info').className = "text-gray-400 flex-1 py-2 flex flex-col items-center transition-all";
-
-            if (tab === 'itinerary') {
-                document.getElementById('itinerary-page').classList.remove('hidden');
-                document.getElementById('nav-itinerary').classList.replace('text-gray-400', 'text-purple-600');
-            } else if (tab === 'map') {
-                document.getElementById('map-page').classList.remove('hidden');
-                document.getElementById('nav-map').classList.replace('text-gray-400', 'text-purple-600');
-                initMap();
-            } else if (tab === 'info') {
-                document.getElementById('info-page').classList.remove('hidden');
-                document.getElementById('nav-info').classList.replace('text-gray-400', 'text-purple-600');
-            }
-        }
-
-        function initMap() {
-            setTimeout(() => {
-                if (!mapInstance) {
-                    mapInstance = L.map('map').setView([33.8, 133.8], 8);
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        attribution: '© OpenStreetMap'
-                    }).addTo(mapInstance);
-                }
-                updateMapMarkers();
-            }, 100);
-        }
-
-        function updateMapMarkers() {
-            if (!mapInstance) return;
             
-            // 清除現有標記
-            mapInstance.eachLayer((layer) => {
-                if (layer instanceof L.Marker) {
-                    mapInstance.removeLayer(layer);
-                }
-            });
+            document.getElementById('nav-itinerary').className = "text-gray-400 flex-1 py-2 flex flex-col items-center";
+            document.getElementById('nav-map').className = "text-gray-400 flex-1 py-2 flex flex-col items-center";
+            document.getElementById('nav-info').className = "text-gray-400 flex-1 py-2 flex flex-col items-center";
 
-            // 根據不同天設定不同標記顏色 (Day 1-2: 紅, Day 3-4: 紫, Day 5-7: 藍)
-            tripData.forEach((d) => {
-                let color = '#3B82F6';
-                if (d.day <= 2) color = '#E96075';
-                else if (d.day <= 4) color = '#9D7BB0';
+            document.getElementById(`${tab}-page`).classList.remove('hidden');
+            document.getElementById(`nav-${tab}`).className = "text-purple-600 flex-1 py-2 flex flex-col items-center font-bold";
 
-                d.items.forEach((item) => {
-                    if (item.lat && item.lng) {
-                        const markerHtml = `<div style="background-color: ${color}; width: 12px; height: 12px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 4px rgba(0,0,0,0.4);"></div>`;
-                        const customIcon = L.divIcon({
-                            html: markerHtml,
-                            className: 'custom-pin',
-                            iconSize: [12, 12]
-                        });
-
-                        L.marker([item.lat, item.lng], { icon: customIcon })
-                            .addTo(mapInstance)
-                            .bindPopup(`<b>Day ${d.day} - ${item.time}</b><br>${item.title}`);
-                    }
-                });
-            });
-
-            // 聚焦到當天第一個景點
-            const currentDayItems = tripData[currentIdx].items;
-            if (currentDayItems.length > 0 && currentDayItems[0].lat) {
-                mapInstance.setView([currentDayItems[0].lat, currentDayItems[0].lng], 10);
+            if (tab === 'map') {
+                setTimeout(() => {
+                    mapInstance.invalidateSize();
+                    updateMapMarkers(currentIdx);
+                }, 200);
             }
+        }
+
+        function saveTime() {
+            const timeVal = document.getElementById('meet-time').value;
+            localStorage.setItem(`meetTime_D${tripData[currentIdx].day}`, timeVal);
         }
 
         function startAlarmSystem() {
-            if (alarmInterval) clearInterval(alarmInterval);
-            
+            if(alarmInterval) clearInterval(alarmInterval);
             alarmInterval = setInterval(() => {
                 const now = new Date();
-                const currentDayData = tripData[currentIdx];
-                const savedMeetTime = localStorage.getItem(`meetTime_D${currentDayData.day}`) || "08:30";
+                const targetStr = localStorage.getItem(`meetTime_D${tripData[currentIdx].day}`) || "08:30";
                 
-                const [meetH, meetM] = savedMeetTime.split(':').map(Number);
-                const meetTimeToday = new Date();
-                meetTimeToday.setHours(meetH, meetM, 0, 0);
+                const [th, tm] = targetStr.split(':').map(Number);
+                let targetMin = th * 60 + tm;
+                let nowMin = now.getHours() * 60 + now.getMinutes();
 
-                // 計算時間差（毫秒）
-                const diff = meetTimeToday.getTime() - now.getTime();
-                
-                // 剛好在集合前 5 分鐘（容許度 1 分鐘內，避免重複觸發使用標記）
-                if (diff > 4 * 60 * 1000 && diff <= 5 * 60 * 1000) {
-                    const hasAlerted = sessionStorage.getItem(`alerted_D${currentDayData.day}`);
-                    if (!hasAlerted) {
-                        document.getElementById('alarm-modal').classList.remove('hidden');
-                        sessionStorage.setItem(`alerted_D${currentDayData.day}`, 'true');
-                    }
+                if (targetMin - nowMin === 5 && now.getSeconds() === 0) {
+                    document.getElementById('alarm-modal').classList.remove('hidden');
                 }
-            }, 10000); // 每 10 秒檢查一次
+            }, 1000);
+        }
+
+        function initLeafletMap() {
+            mapInstance = L.map('map').setView([33.8, 133.8], 8);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(mapInstance);
+            markersGroup = L.layerGroup().addTo(mapInstance);
+        }
+
+        function updateMapMarkers(idx) {
+            markersGroup.clearLayers();
+            const d = tripData[idx];
+            const bounds = [];
+
+            let color = '#E96075';
+            if (d.day >= 3 && d.day <= 4) color = '#9D7BB0';
+            if (d.day >= 5) color = '#3B82F6';
+
+            // 標記飯店
+            if (d.hotel && d.hotel.lat) {
+                L.circleMarker([d.hotel.lat, d.hotel.lng], {
+                    radius: 12,
+                    fillColor: '#10B981',
+                    color: '#fff',
+                    weight: 3,
+                    fillOpacity: 0.9
+                }).addTo(markersGroup).bindPopup(`<b>🏨 住宿點：${d.hotel.name}</b>`);
+                bounds.push([d.hotel.lat, d.hotel.lng]);
+            }
+
+            // 標記景點
+            d.items.forEach((item) => {
+                if (item.lat && item.lng) {
+                    L.circleMarker([item.lat, item.lng], {
+                        radius: 10,
+                        fillColor: color,
+                        color: '#fff',
+                        weight: 2,
+                        fillOpacity: 0.9
+                    }).addTo(markersGroup).bindPopup(`<b>⏰ ${item.time}<br>📍 ${item.title}</b>`);
+                    bounds.push([item.lat, item.lng]);
+                }
+            });
+
+            if (bounds.length > 0) {
+                mapInstance.fitBounds(bounds, { padding: [40, 40] });
+            }
         }
     </script>
 </body>

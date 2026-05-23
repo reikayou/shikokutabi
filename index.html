@@ -99,6 +99,15 @@
 
         #alarm-modal { backdrop-filter: blur(5px); }
         #map { height: 60vh; width: 100%; border-radius: 1.5rem; z-index: 10; }
+
+        /* 讀取動畫 */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        .animate-pulse-soft {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
     </style>
 </head>
 <body class="pb-32">
@@ -127,7 +136,10 @@
                                 <i class="fa-solid fa-cloud-sun"></i>
                             </div>
                             <div>
-                                <h3 class="font-black text-gray-800 text-lg" id="weather-city">高知市</h3>
+                                <div class="flex items-center space-x-1.5">
+                                    <h3 class="font-black text-gray-800 text-lg" id="weather-city">高知市</h3>
+                                    <span id="weather-source-badge" class="text-[9px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded font-bold">預設</span>
+                                </div>
                                 <p class="text-[11px] text-gray-400 font-bold" id="weather-cond">晴時多雲</p>
                             </div>
                         </div>
@@ -386,7 +398,7 @@
                 ]
             },
             { 
-                               day: 6, date: "08 Jun", loc: "高松", 
+                day: 6, date: "08 Jun", loc: "高松", 
                 weather: { icon: "fa-sun", temp: "27°C", feels: "28°C", cond: "晴天", sun: "04:53", sunset: "19:15", outfit: "市區逛街行程，輕便好穿脫的服裝最適合採買試穿。" },
                 guide: { hl: "手打烏龍麵初體驗！晚上享用香川縣靈魂美食「骨付鳥」，並進行藥妝大採購。", rem: "Dormy Inn頂樓有溫泉，逛街腿痠回飯店剛好可以泡湯放鬆。", backup: "若遇雨可前往高松市美術館或新屋島水族館。", food: "一鶴骨付鳥、橄欖鰤魚" },
                 hotel: { name: "高松 Dormy Inn", phone: "087-832-5489", addr: "香川縣高松市瓦町1-10-10", lat: 34.3401, lng: 134.0504, history: "日本知名連鎖商務飯店品牌，以提供高標準的溫泉與在地化早餐聞名。", features: "頂樓設有天然溫泉大浴場『玉藻之湯』，宵夜時段提供免費醬油拉麵。", nearby: "瓦町車站、高松中央商店街。" },
@@ -399,7 +411,7 @@
             { 
                 day: 7, date: "09 Jun", loc: "歸途", 
                 weather: { icon: "fa-cloud", temp: "25°C", feels: "26°C", cond: "多雲", sun: "04:53", sunset: "19:15", outfit: "準備搭機，長褲與舒適休閒鞋是最佳選擇。" },
-                guide: { hl: "在米其林三星級百年庭園中品茶，隨後前往機場免稅店進行最後衝刺。", rem: "還車前記得加滿油（索取收據），並確認護照與行李是否帶齊。", backup: "若時間充裕可至大型購物中心 AEON MALL 綾川最後採買。", food: "機場特色烏龍麵、讚岐和牛便感" },
+                guide: { hl: "在米其林三星級百年庭園中品茶，隨後前往機場免稅店進行最後衝刺。", rem: "還車前記得加滿油（索取收據），並確認護照與行李是否帶齊。", backup: "若時間充裕可至大型購物中心 AEON MALL 綾川最後採買。", food: "機場特色烏龍麵、讚岐和牛便當" },
                 hotel: { name: "溫溫暖暖的家", phone: "-", addr: "台灣", lat: 25.0330, lng: 121.5654, history: "建立於出生那一年，是世界上最舒適的地方。", features: "擁有最熟悉的床鋪與親愛的家人。", nearby: "巷口的便利商店與熟悉的鹽酥雞攤。" },
                 items: [
                     { time: "09:30", title: "栗林公園", story: "在這裡漫步，可體會「一步一景」的極致造園藝術。", history: "江戶時代讚岐高松藩主的別邸，歷經百年修築而成。", features: "回遊式大名庭園，以紫雲山為背景，巧妙佈置了水池與假山，獲米其林綠色指南三星評價。", mustSee: "從飛來峰俯瞰偃月橋、在掬月亭品茶賞景。", eat: "掬月亭抹茶與和菓子", lat: 34.3297, lng: 134.0444 },
@@ -413,6 +425,28 @@
         let mapInstance = null;
         let alarmInterval = null;
         let markersGroup = null;
+
+        // WMO 天氣代碼定義對照表 (Open-Meteo)
+        const weatherCodes = {
+            0: { cond: "晴天", icon: "fa-sun" },
+            1: { cond: "晴時多雲", icon: "fa-cloud-sun" },
+            2: { cond: "陰晴不定", icon: "fa-cloud-sun" },
+            3: { cond: "多雲", icon: "fa-cloud" },
+            45: { cond: "有霧", icon: "fa-smog" },
+            48: { cond: "局部霧", icon: "fa-smog" },
+            51: { cond: "毛毛雨", icon: "fa-cloud-rain" },
+            53: { cond: "微雨", icon: "fa-cloud-rain" },
+            55: { cond: "小雨", icon: "fa-cloud-rain" },
+            61: { cond: "小陣雨", icon: "fa-cloud-showers-heavy" },
+            63: { cond: "雨天", icon: "fa-cloud-showers-heavy" },
+            65: { cond: "豪雨", icon: "fa-cloud-showers-heavy" },
+            80: { cond: "局部陣雨", icon: "fa-cloud-sun-rain" },
+            81: { cond: "大陣雨", icon: "fa-cloud-showers-heavy" },
+            82: { cond: "強陣雨", icon: "fa-cloud-showers-heavy" },
+            95: { cond: "雷陣雨", icon: "fa-cloud-bolt" },
+            96: { cond: "雷陣雨伴隨冰雹", icon: "fa-cloud-bolt" },
+            99: { cond: "大雷雨", icon: "fa-cloud-bolt" }
+        };
 
         window.onload = function() {
             init();
@@ -450,15 +484,12 @@
                 }
             });
 
-            document.getElementById('weather-city').innerText = d.loc;
-            document.getElementById('weather-temp').innerText = d.weather.temp;
-            document.getElementById('weather-feels').innerText = d.weather.feels;
-            document.getElementById('weather-cond').innerText = d.weather.cond;
-            document.getElementById('weather-sun').innerText = d.weather.sun;
-            document.getElementById('weather-sunset').innerText = d.weather.sunset;
-            document.getElementById('weather-outfit').innerText = d.weather.outfit;
-            document.getElementById('weather-icon').innerHTML = `<i class="fa-solid ${d.weather.icon}"></i>`;
-            
+            // 1. 先載入預設靜態天氣資訊 (作為載入前與超時備用)
+            applyWeatherUI(d.loc, d.weather.temp, d.weather.feels, d.weather.cond, d.weather.sun, d.weather.sunset, d.weather.icon, "預設");
+
+            // 2. 向 Open-Meteo API 發起自動更新天氣
+            fetchRealtimeWeather(idx);
+
             document.getElementById('guide-highlight').innerText = d.guide.hl;
             document.getElementById('guide-reminder').innerText = d.guide.rem;
             document.getElementById('guide-backup').innerText = d.guide.backup || "無（依原訂計畫）";
@@ -509,6 +540,135 @@
 
             if (mapInstance) {
                 updateMapMarkers(idx);
+            }
+        }
+
+        // 向 Open-Meteo API 獲取天氣數據
+        async function fetchRealtimeWeather(idx) {
+            const d = tripData[idx];
+            // 找出該天可用的經緯度（優先找飯店，次之找第一個行程景點）
+            let lat = d.hotel && d.hotel.lat ? d.hotel.lat : null;
+            let lng = d.hotel && d.hotel.lng ? d.hotel.lng : null;
+
+            if (!lat && d.items && d.items.length > 0) {
+                lat = d.items[0].lat;
+                lng = d.items[0].lng;
+            }
+
+            if (!lat || !lng) return; // 沒經緯度則直接維持原預設
+
+            // 為了表示載入中，微調載入動畫
+            const badge = document.getElementById('weather-source-badge');
+            badge.innerText = "更新中...";
+            badge.className = "text-[9px] bg-yellow-100 text-yellow-700 px-1.5 py-0.5 rounded font-bold animate-pulse-soft";
+
+            // 對應行程日期格式 "2026-06-03" (配合 day1 ~ day7 代表 6/3 ~ 6/9)
+            const dayOffset = d.day - 1;
+            const targetDateStr = `2026-06-0${3 + dayOffset}`;
+
+            try {
+                // 發起請求 (包含當前天氣 current 與該天的預測)
+                // 採用 Open-Meteo 氣象預報介面，若日期尚未到達則提供實時天氣供參考
+                const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset&timezone=Asia/Tokyo&start_date=${targetDateStr}&end_date=${targetDateStr}`);
+                
+                if (!response.ok) throw new Error("API response error");
+
+                const data = await response.json();
+                
+                if (data && data.daily && data.daily.time && data.daily.time.length > 0) {
+                    const dailyData = data.daily;
+                    const wCode = dailyData.weathercode[0];
+                    const maxTemp = Math.round(dailyData.temperature_2m_max[0]);
+                    const minTemp = Math.round(dailyData.temperature_2m_min[0]);
+                    const maxFeels = Math.round(dailyData.apparent_temperature_max[0]);
+                    
+                    // 時間格式整理 "2026-06-03T04:55" -> "04:55"
+                    const formatSunTime = (isoStr) => {
+                        if (!isoStr) return "--:--";
+                        return isoStr.split("T")[1] || isoStr;
+                    };
+
+                    const sunTime = formatSunTime(dailyData.sunrise[0]);
+                    const sunsetTime = formatSunTime(dailyData.sunset[0]);
+
+                    // 天氣代碼匹配
+                    const matchedWeather = weatherCodes[wCode] || { cond: "晴時多雲", icon: "fa-cloud-sun" };
+
+                    // 更新 UI
+                    applyWeatherUI(
+                        d.loc, 
+                        `${minTemp}~${maxTemp}°C`, 
+                        `${maxFeels}°C`, 
+                        matchedWeather.cond, 
+                        sunTime, 
+                        sunsetTime, 
+                        matchedWeather.icon, 
+                        "即時"
+                    );
+                } else {
+                    // 若當天預報超出 16 天而無數據，則改為查詢今天的 Live 即時天氣，讓畫面依然有自駕即時數據
+                    const liveResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=temperature_2m,apparent_temperature,is_day,weather_code&daily=sunrise,sunset&timezone=Asia/Tokyo`);
+                    if (!liveResponse.ok) throw new Error("Live API error");
+                    const liveData = await liveResponse.json();
+
+                    if (liveData && liveData.current) {
+                        const cur = liveData.current;
+                        const temp = Math.round(cur.temperature_2m);
+                        const feels = Math.round(cur.apparent_temperature);
+                        const matchedWeather = weatherCodes[cur.weather_code] || { cond: "晴時多雲", icon: "fa-cloud-sun" };
+                        
+                        const formatSunTime = (isoStr) => {
+                            if (!isoStr) return "--:--";
+                            return isoStr.split("T")[1] || isoStr;
+                        };
+
+                        const sunTime = liveData.daily ? formatSunTime(liveData.daily.sunrise[0]) : d.weather.sun;
+                        const sunsetTime = liveData.daily ? formatSunTime(liveData.daily.sunset[0]) : d.weather.sunset;
+
+                        applyWeatherUI(
+                            d.loc, 
+                            `${temp}°C`, 
+                            `${feels}°C`, 
+                            matchedWeather.cond + " (Live)", 
+                            sunTime, 
+                            sunsetTime, 
+                            matchedWeather.icon, 
+                            "LIVE"
+                        );
+                    } else {
+                        throw new Error("No data found");
+                    }
+                }
+            } catch (err) {
+                // 發生任何錯誤時，降級套用預設的靜態數值，確保 100% 正常顯示
+                applyWeatherUI(d.loc, d.weather.temp, d.weather.feels, d.weather.cond, d.weather.sun, d.weather.sunset, d.weather.icon, "預設");
+            }
+        }
+
+        // 套用更新到天氣 UI 元素上
+        function applyWeatherUI(city, temp, feels, cond, sunrise, sunset, iconClass, source) {
+            document.getElementById('weather-city').innerText = city;
+            document.getElementById('weather-temp').innerText = temp;
+            document.getElementById('weather-feels').innerText = feels;
+            document.getElementById('weather-cond').innerText = cond;
+            document.getElementById('weather-sun').innerText = sunrise;
+            document.getElementById('weather-sunset').innerText = sunset;
+            
+            // 天氣圖示處理
+            const iconContainer = document.getElementById('weather-icon');
+            iconContainer.innerHTML = `<i class="fa-solid ${iconClass}"></i>`;
+
+            // 天氣資料來源標章處理
+            const badge = document.getElementById('weather-source-badge');
+            badge.className = "text-[9px] px-1.5 py-0.5 rounded font-bold transition-all";
+            badge.innerText = source;
+
+            if (source === "即時") {
+                badge.classList.add("bg-purple-100", "text-purple-700");
+            } else if (source === "LIVE") {
+                badge.classList.add("bg-blue-100", "text-blue-700");
+            } else {
+                badge.classList.add("bg-gray-100", "text-gray-700");
             }
         }
 

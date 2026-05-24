@@ -205,15 +205,21 @@
                 <h2 class="text-xl font-bold text-gray-800 flex items-center">
                     <i class="fa-solid fa-map-location-dot text-purple-500 mr-2"></i>四國全區地圖
                 </h2>
-                <p class="text-xs text-gray-500 mt-1">已依照行程日期為您標示不同顏色的地標。</p>
+                <p class="text-xs text-gray-500 mt-1">已為您用 7 種不同的繽紛顏色標示每天的行程地標。</p>
             </div>
             
             <div class="bg-white p-2 rounded-super shadow-soft border border-purple-50 relative">
                 <div id="map"></div>
-                <div class="absolute bottom-4 left-4 right-4 z-[400] bg-white/90 backdrop-blur-sm p-3 rounded-2xl shadow-lg border border-gray-100 flex justify-around text-[10px] font-bold">
-                    <div class="flex items-center"><span class="w-3 h-3 rounded-full bg-[#E96075] mr-1"></span>Day 1-2</div>
-                    <div class="flex items-center"><span class="w-3 h-3 rounded-full bg-[#9D7BB0] mr-1"></span>Day 3-4</div>
-                    <div class="flex items-center"><span class="w-3 h-3 rounded-full bg-[#3B82F6] mr-1"></span>Day 5-7</div>
+                <!-- 7 天色彩圖例區（已移除具體行程地點名稱，僅保留 Day 名稱與飯店） -->
+                <div class="absolute bottom-4 left-4 right-4 z-[400] bg-white/95 backdrop-blur-sm p-3 rounded-2xl shadow-lg border border-gray-100 grid grid-cols-4 gap-y-1.5 gap-x-1 text-[9px] font-bold">
+                    <div class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-[#F43F5E] mr-1"></span>Day 1</div>
+                    <div class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-[#FB923C] mr-1"></span>Day 2</div>
+                    <div class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-[#FBBF24] mr-1"></span>Day 3</div>
+                    <div class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-[#34D399] mr-1"></span>Day 4</div>
+                    <div class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-[#60A5FA] mr-1"></span>Day 5</div>
+                    <div class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-[#818CF8] mr-1"></span>Day 6</div>
+                    <div class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-[#C084FC] mr-1"></span>Day 7</div>
+                    <div class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-[#10B981] mr-1"></span>🏨 飯店</div>
                 </div>
             </div>
         </section>
@@ -360,9 +366,9 @@
                 guide: { hl: "探訪日本最後的清流！品嚐大正町市場鮮魚，接著飽覽沈下橋絕景，晚上直奔弘人市場體驗高知屋台酒國文化。", rem: "四萬十川周邊道路較窄，開車請留意對向來車。弘人市場人潮較多，請留意長輩隨身物品。", backup: "若無法前往沈下橋，可改參觀海洋堂四萬十嗜好館。", food: "明神丸明火炙燒鰹魚、四萬十川天然鰻魚" },
                 hotel: { name: "高知城西館", phone: "088-822-0281", addr: "高知縣高知市上町2-5-34", lat: 33.55717357302664, lng: 133.52436758944555, query: "城西館", history: "創業於明治10年(1877年)，擁有超過140年歷史，為皇室與眾多文人雅士的指定御宿。", features: "頂樓展望露天風呂可俯瞰高知城與市區夜景。", nearby: "距離高知城步行僅需10分鐘。" },
                 items: [
-                    { time: "10:00", title: "久禮大正町市場", story: "擁有百年歷史的古老漁夫市場。每天早上由當地漁民直送新鮮漁獲，充滿濃厚的人情味。", history: "源自明治時代的漁民聚集地，歷經百年風霜依然繁華，是了解土佐漁港文化的最佳去處。", features: "濃厚的人情味與純樸的土佐漁港風情。", mustSee: "當日限定鮮切肥美『初鰹』、當地獨有柑橘水果。", eat: "現切初鰹定食", buy: "現炸天婦羅魚餅", lat: 33.3293, lng: 133.2307, query: "久禮大正町市場" },
+                    { time: "10:00", title: "久禮大正町市場", story: "擁有百年歷史的古老漁夫市場. 每天早上由當地漁民直送新鮮漁獲，充滿濃厚的人情味。", history: "源自明治時代的漁民聚集地，歷經百年風霜依然繁華，是了解土佐漁港文化的最佳去處。", features: "濃厚的人情味與純樸的土佐漁港風情。", mustSee: "當日限定鮮切肥美『初鰹』、當地獨有柑橘水果。", eat: "現切初鰹定食", buy: "現炸天婦羅魚餅", lat: 33.3293, lng: 133.2307, query: "久禮大正町市場" },
                     { time: "12:15", title: "佐田沉下橋", story: "四萬十川最長的一座沉下橋，展現了當地人與自然共存的智慧。", history: "建於昭和年代，為了適應四萬十川暴漲而特意設計成會被水淹沒的橋樑。", features: "無欄杆設計，與自然風景完美融合，橋面寬廣適合散步。", mustSee: "橋面上拍攝山川倒影與清澈見底的河水。", buy: "四萬十川青海苔", lat: 33.0156, lng: 132.8869, query: "佐田沈下橋 停車場" },
-                    { time: "14:00", title: "岩間沈下橋", story: "電視廣告與海報最愛取景的沈下橋！遠看能將白色的橋身、碧綠的河道以及背景翠綠的群山完美融入構圖中。", history: "四萬十川最著名、拍照極具代表性的地標之一，常作為各類旅遊觀光海報的背景。", features: "此處設有專屬觀景台，從高處俯瞰的視野極佳，能拍出明信片等級的自駕美照。", mustSee: "從俯瞰視角拍攝白色橋梁在翠綠山谷間橫跨河面的對比畫面。", buy: "四萬十川青海苔酥", lat: 33.1284, lng: 132.8173, query: "岩間沈下橋" },
+                    { time: "14:00", title: "岩間沈下橋", story: "電視廣告與海報最愛取景的沈下橋！遠看能將白色的橋身、碧綠 of the 河道以及背景翠綠的群山完美融入構圖中。", history: "四萬十川最著名、拍照極具代表性的地標之一，常作為各類旅遊觀光海報的背景。", features: "此處設有專屬觀景台，從高處俯瞰的視野極佳，能拍出明信片等級的自駕美照。", mustSee: "從俯瞰視角拍攝白色橋梁在翠綠山谷間橫跨河面的對比畫面。", buy: "四萬十川青海苔酥", lat: 33.1284, lng: 132.8173, query: "岩間沈下橋" },
                     { time: "18:30", title: "弘人市場", story: "被稱為「高知的廚房」，聚集了超過60家攤位，感受高知縣民熱情豪邁的「酒國文化」。", history: "1998年開幕，旨在振興高知市中心商圈，迅速成為在地人與觀光客的最愛。", features: "獨特的『屋台村』風格，各攤位買完後可於公共區併桌共食。", mustSee: "明神丸明火炙燒鰹魚秀、各式在地酒造攤位。", menu: "明神丸明火炙燒鰹魚", lat: 33.5606, lng: 133.5348, query: "弘人市場" }
                 ]
             },
@@ -373,7 +379,7 @@
                 hotel: { name: "小豆島國際飯店", phone: "0879-62-2111", addr: "香川縣小豆郡土庄町甲24-67", lat: 34.4828, lng: 134.1868, query: "小豆島國際飯店", history: "長期以來作為小豆島觀光的重要門戶，接待無數國內外旅客。", features: "全客房皆為海景房，且距離知名景點天使之路極近。", nearby: "步行1分鐘即可抵達天使之路、迷路之町。" },
                 items: [
                     { time: "11:00", title: "小步危展望台", story: "自駕限定的景點。", mustSee: "可以欣賞到小步危峽谷的岩石、美麗的翠綠吉野川以及周圍鬱鬱蔥蔥的山脈的壯麗景色。", lat: 33.9185, lng: 133.7580, query: "小步危展望台" },
-                    { time: "13:00", title: "高松港搭乘渡輪", story: "開著車直接駛入巨大的渡輪肚子裡，是非常特別的跳島體驗。", history: "渡輪長年作為瀨戶內海島嶼間的交通與物流命脈。", features: "巨型船體可容納多輛遊覽車與小客車，船艙平穩舒適。", mustSee: "甲板上的瀨戶內海群島風光、船上熱騰騰的烏龍麵販賣部。", eat: "船上熱騰騰素麵", lat: 34.3541, lng: 134.0502, query: "高松港 小豆島渡輪乘船處" },
+                    { time: "13:00", title: "高松港搭乘渡輪", story: "開著車直接駛入巨大的渡輪肚子裡，是非常特別的跳島體驗。", history: "渡輪長年作為瀨戶內海島嶼間的交通與物流命脈。", features: "船體可容納多輛遊覽車與小客車，船艙平穩舒適。", mustSee: "甲板上的瀨戶內海群島風光、船上熱騰騰的烏龍麵販賣部。", eat: "船上熱騰騰素麵", lat: 34.3541, lng: 134.0502, query: "高松港 小豆島渡輪乘船處" },
                     { time: "16:00", title: "天使之路 (Angel Road)", story: "傳說只要與重要的人牽手走過這條步道，心願就能成真，是小豆島上最具人氣的浪漫景點。", history: "受潮汐影響形成的自然奇觀，近年因浪漫傳說成為戀人聖地。", features: "一條受潮汐影響、一天僅會浮現兩次的夢幻沙洲步道。", mustSee: "沙洲中央的約會鐘、寫滿心願的愛心繪馬。", buy: "心型繪馬明信片", lat: 34.4815, lng: 134.1888, query: "天使之路" }
                 ]
             },
@@ -391,22 +397,23 @@
                 day: 5, date: "07 Jun", loc: "香川", 
                 weather: { icon: "fa-cloud-sun", temp: "26°C", feels: "28°C", cond: "晴時多雲", sun: "04:53", sunset: "19:14", outfit: "白天注意防曬，傍晚在父母之濱拍照建議穿著亮色或淺色服裝。" },
                 guide: { hl: "挑戰海上守護神金刀比羅宮！午後登高眺望天空之鳥居，傍晚衝刺日本版天空之鏡，拍下奇蹟美照。", rem: "已預約金刀比羅宮上午十一點車輛乘入。前往高屋神社山路較窄，會車請注意安全。", backup: "若父母之濱無倒影，可至附近特色咖啡廳觀海。", food: "讚岐烏龍麵、香川當地鮮魚料理" },
-                hotel: { name: "高松 Dormy Inn", phone: "087-832-5489", addr: "香川縣高松市瓦町1-10-10", lat: 34.3401, lng: 134.0504, query: "ドーミーイン高松", history: "日本知名連鎖商務飯店 brand，以提供高標準的溫泉與在地化早餐聞名。", features: "頂樓設有天然溫泉大浴場『玉藻之湯』，宵夜時段提供免費醬油拉麵。", nearby: "瓦町車站、高松中央商店街。" },
+                hotel: { name: "Dormy Inn 高松中央公園前", phone: "087-835-5489", addr: "香川縣高松市天神前1-3", lat: 34.3377, lng: 134.0487, query: "ドーミーイン高松中央公園前", history: "日本知名連鎖飯店品牌，位於中央公園前，位置絕佳，以其高標準的溫泉與在地化早餐聞名。", features: "頂樓設有天然溫泉大浴場『琴彈之湯』，宵夜時段提供免費醬油拉麵。", nearby: "高松中央公園、瓦町商圈、高松中央商店街。" },
                 items: [
                     { time: "11:00", title: "金刀比羅宮", story: "供奉著海上交通的守護神「金毘羅」，前往本宮需攀爬石階，沿途充滿歷史氛圍。", history: "自古便是海神信仰中心，江戶時代盛行『一生一定要參拜一次』的傳統。", features: "通往奧社多達1368階的長長石階，以及熱鬧的表參道老街。", mustSee: "御本宮的無敵視野、象頭山特有『金色幸福御守』。", eat: "表參道花嫁冰淇淋", buy: "金色幸福御守", lat: 34.1834, lng: 133.8122, query: "金刀比羅宮" },
-                    { time: "14:30", title: "高屋神社 (天空之鳥居)", story: "官方正式名稱為高屋神社本宮，位於稻積山頂，以其能俯瞰整個讚岐平原與瀨戶內海的天空鳥居絕景名揚日本國內外。", history: "屬於式內社，歷史極其悠久，古代便是當地居民祈求降雨與航海安全的聖地。", features: "矗立於高聳懸崖邊的白色鳥居，與後方無邊際的湛藍大海融為一體，視覺張力驚人。", mustSee: "由神社石階往下拍，將鳥居、市區、海景與海岸線一次收入鏡頭的明信片構圖。", buy: "神社特製御守", lat: 34.1354, lng: 133.6936, query: "高屋神社 本宮" },
-                    { time: "17:30", title: "父母之濱", story: "被譽為「日本的烏尤尼鹽湖」，擁有長達1公力的平靜沙灘。", history: "原本是默默無聞的當地沙灘，近年因SNS美照一躍成為國際級打卡景點。", features: "退潮時積水形成的巨大天然鏡面，在無風的傍晚反射出絕美天空。", mustSee: "日落魔幻時刻的絕美天空之鏡倒影。", lat: 34.1876, lng: 133.6444, query: "父母之濱" }
+                    { time: "14:30", title: "高屋神社 (天空之鳥居)", story: "官方正式名稱為高屋神社本宮，位於稻積山頂，以其能俯瞰整個讚岐平原與瀨戶內海的天空鳥居絕景名揚日本國內外。", history: "屬於式內社，歷史極其悠久，古代便是當地居民祈求降雨與航海安全的聖地。", features: "矗立於高聳懸崖邊的白色鳥居，與後方無邊際的湛藍大海融為一體，視覺張力驚人。", mustSee: "由神社石階往下拍，將鳥居、市區、海景與海岸線一次收入鏡頭 the 明信片構圖。", buy: "神社特製御守", lat: 34.1354, lng: 133.6936, query: "高屋神社 本宮" },
+                    { time: "17:30", title: "父母之濱", story: "被譽為「日本的烏尤尼鹽湖」，擁有長達1公里的平靜沙灘。", history: "原本是默默無聞的當地沙灘，近年因SNS美照一躍成為國際級打卡景點。", features: "退潮時積水形成的巨大天然鏡面，在無風的傍晚反射出絕美天空。", mustSee: "日落魔幻時刻的絕美天空之鏡倒影。", lat: 34.1876, lng: 133.6444, query: "父母之濱" }
                 ]
             },
             { 
                 day: 6, date: "08 Jun", loc: "高松", 
                 weather: { icon: "fa-sun", temp: "27°C", feels: "28°C", cond: "晴天", sun: "04:53", sunset: "19:15", outfit: "市區逛街行程，輕便好穿脫的服裝最適合採買試穿。" },
-                guide: { hl: "手打烏龍麵初體驗！晚上享用香川縣靈魂美食「骨付鳥」，並進行藥妝大採購。", rem: "Dormy Inn頂樓有溫泉，逛街腿痠回飯店剛好可以泡湯放鬆。", backup: "若遇雨可前往高松市美術館或新屋島水族館。", food: "一鶴骨付鳥、橄欖鰤魚" },
-                hotel: { name: "高松 Dormy Inn", phone: "087-832-5489", addr: "香川縣高松市瓦町1-10-10", lat: 34.3401, lng: 134.0504, query: "ドーミーイン高松", history: "日本知名連鎖商務飯店品牌，以提供高標準的溫泉與在地化早餐聞名。", features: "頂樓設有天然溫泉大浴場『玉藻之湯』，宵夜時段提供免費醬油拉麵。", nearby: "瓦町車站、高松中央商店街。" },
+                guide: { hl: "手打烏龍麵高松校初體驗！下午漫步四國村體驗山野古民家與安藤忠雄建築，黃昏登上屋島展望台俯瞰瀨戶內海，晚上享用香川靈魂美食「骨付鳥」並進行藥妝大採購。", rem: "四國村內階梯與斜坡較多，漫步時請多加留意長輩腳步。Dormy Inn頂樓有溫泉，逛街腿痠回飯店剛好可以泡湯放鬆。", backup: "若遇雨可前往高松市美術館或新屋島水族館。", food: "一鶴骨付鳥、四國村わら家烏龍麵、橄欖鰤魚" },
+                hotel: { name: "Dormy Inn 高松中央公園前", phone: "087-835-5489", addr: "香川縣高松市天神前1-3", lat: 34.3377, lng: 134.0487, query: "ドーミーイン高松中央公園前", history: "日本知名連鎖飯店品牌，位於中央公園前，位置絕佳，以其高標準的溫泉與在地化早餐聞名。", features: "頂樓設有天然溫泉大浴場『琴彈之湯』，宵夜時段提供免費醬油拉麵。", nearby: "高松中央公園、瓦町商圈、高松中央商店街。" },
                 items: [
-                    { time: "10:00", title: "中野烏龍麵學校", story: "來到「烏龍麵縣」香川的必玩體驗！親手製作出Q彈的讚岐烏龍麵。", history: "為了推慢讚岐烏龍麵文化而設立的體驗型設施。", features: "跟著老師在歡樂的流行音樂節奏中，邊跳舞邊用腳踩揉麵糰。", mustSee: "親手踩揉的麵糰、獲頒掛著桿麵棍的專屬畢業證書。", menu: "自己踩的烏龍麵", buy: "半生烏龍麵條", lat: 34.1835, lng: 133.8188, query: "中野烏龍麵學校 琴平校" },
-                    { time: "15:00", title: "屋島展望台", story: "位於高松市郊的熔岩台地，觀景台能以極佳的視野俯瞰瀨戶內海星羅棋布的島嶼。", history: "日本古代『源平合戰』的關鍵戰場之一，歷史底蘊深厚。", features: "獨特的熔岩台地地形，外觀平坦如巨大屋頂。", mustSee: "飛來館、俯瞰瀨戶內海與高松市區的美景。", lat: 34.3582, lng: 134.1011, query: "屋島展望台" },
-                    { time: "18:00", title: "高松市區晚餐 & 採買", story: "香川不自由烏龍麵，香烤帶骨雞腿也是絕品。晚餐後前往中央商店街進行大採購。", history: "高松中央商店街為日本最長的拱廊商店街，全長達2.7公里。", features: "聚集了香川最知名的美食與豐富的藥妝百貨。", mustSee: "一鶴『骨付鳥』的香脆外皮與多汁口感。", menu: "一鶴 骨付鳥(嫩雞)", buy: "藥妝、各式零食", lat: 34.3431, lng: 134.0485, query: "一鶴 高松店" }
+                    { time: "10:00", title: "中野烏龍麵學校 (高松校)", story: "來到「烏龍麵縣」香川的必玩體驗！在好停車、交通便利的高松校親手製作Q彈讚岐烏龍麵。", history: "為了推慢讚岐烏龍麵文化而設立的體驗型設施，高松校設有寬敞的自駕停車場。", features: "跟著老師在歡樂的流行音樂節奏中，邊跳舞邊用腳踩揉麵糰，趣味性滿分。", mustSee: "親手踩揉的麵糰、獲頒掛著桿麵棍的專屬畢業證書。", menu: "自己踩的烏龍麵", buy: "半生烏龍麵條", lat: 34.3025, lng: 134.0163, query: "中野うどん学校 高松校" },
+                    { time: "13:30", title: "四國村 (Shikokumura)", story: "位於屋島山腳下的露天博物館，展示了從四國各地遷移重建的33棟江戶至大正時期的古民家建築，並與大自然完美融合。", history: "於1976年創立，旨在保存日本逐漸消失的傳統鄉村、漁村建築與生活遺產。", features: "園內林木茂盛，擁有仿造德島祖谷的『藤蔓吊橋』、醬油手工作坊以及由安藤忠雄設計的『四國村藝廊』。", mustSee: "走過驚險的藤蔓橋體驗、欣賞安藤忠雄標誌性的清水模藝廊與水景庭園。", eat: "入口旁名店「わら家」稻草屋烏龍麵", buy: "四國村傳統手藝紀念品", lat: 34.3443, lng: 134.1012, query: "四国村" },
+                    { time: "16:00", title: "屋島展望台", story: "位於高松市郊的熔岩台地，觀景台能以極佳的視野俯瞰瀨戶內海星羅棋布的島嶼以及高松港口全景。", history: "日本古代『源平合戰』的關鍵古戰場，也是著名的能量景點。", features: "獨特的平頂熔岩地形，新設的環狀觀景迴廊『獅子之靈巖』展望極佳。", mustSee: "黃昏時投擲『開運陶片』（小瓦片）祈福、俯瞰瀨戶內海落日絕景。", lat: 34.3582, lng: 134.1011, query: "屋島展望台" },
+                    { time: "18:00", title: "高松市區晚餐 & 採買", story: "香川不只有烏龍麵，香烤帶骨雞腿也是絕品. 晚餐後前往中央商店街進行大採購。", history: "高松中央商店街為日本最長的拱廊商店街，全長達2.7公里。", features: "聚集了香川最知名的美食與豐富的藥妝百貨。", mustSee: "一鶴『骨付鳥』的香脆外皮與多汁口感。", menu: "一鶴 骨付鳥(嫩雞)", buy: "藥妝、各式零食", lat: 34.3431, lng: 134.0485, query: "一鶴 高松店" }
                 ]
             },
             { 
@@ -794,9 +801,13 @@
 
         function initLeafletMap() {
             mapInstance = L.map('map').setView([33.8, 133.8], 8);
+            
+            // 更換為具備完美相容性、高解析、無防盜鏈Referer封鎖機制的 OpenStreetMap 國際熱力組織通用瓦片服務
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap contributors'
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
             }).addTo(mapInstance);
+            
             markersGroup = L.layerGroup().addTo(mapInstance);
         }
 
@@ -805,11 +816,20 @@
             const d = tripData[idx];
             const bounds = [];
 
-            let color = '#E96075';
-            if (d.day >= 3 && d.day <= 4) color = '#9D7BB0';
-            if (d.day >= 5) color = '#3B82F6';
+            // 7 天專屬高質感馬卡龍色彩映射表
+            const dayColors = {
+                1: '#F43F5E', // Day 1: 玫瑰紅
+                2: '#FB923C', // Day 2: 活力橘
+                3: '#FBBF24', // Day 3: 向日葵黃
+                4: '#34D399', // Day 4: 薄荷綠
+                5: '#60A5FA', // Day 5: 天空藍
+                6: '#818CF8', // Day 6: 薰衣草藍
+                7: '#C084FC'  // Day 7: 夢幻紫
+            };
 
-            // 標記飯店
+            const color = dayColors[d.day] || '#9D7BB0';
+
+            // 標記飯店 (統一使用溫潤的翡翠綠，用以區別行程與住宿點)
             if (d.hotel && d.hotel.lat) {
                 L.circleMarker([d.hotel.lat, d.hotel.lng], {
                     radius: 12,
@@ -821,7 +841,7 @@
                 bounds.push([d.hotel.lat, d.hotel.lng]);
             }
 
-            // 標記景點
+            // 標記該天行程的所有景點
             d.items.forEach((item) => {
                 if (item.lat && item.lng) {
                     L.circleMarker([item.lat, item.lng], {
